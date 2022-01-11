@@ -93,7 +93,11 @@
 		var player = document.getElementById("playerIcon");
 
 		counter = 0
-		timer = 33;
+		if (screen.width < 600){
+			timer = 38;
+		}else{
+			timer = 33;
+		}
 
 
 		function play(){
@@ -102,7 +106,11 @@
 			document.getElementById('main').style.display="flex";
 			score.innerHTML = "Score: 0";
 			counter = 0;
-			timer = 33;
+			if (screen.width < 600){
+				timer = 38;
+			}else{
+				timer = 33;
+			}
 			borderSeter();
 
 		}
@@ -169,7 +177,12 @@
 			color = getRandomColor();
 			border.style.stroke = color;
 			border.innerHTML = figureList[f];
-			width = 600;
+			if (screen.width > 600) {
+				width = 600;
+			}else{
+				width = screen.width;
+			}
+			
 			bC = setInterval(function borderController(){
 				if (width >= 110) {
 					width = width - 10;
