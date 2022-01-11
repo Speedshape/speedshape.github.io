@@ -1,0 +1,148 @@
+*,body{
+	margin:0;
+	padding: 0;
+	font-family: "Cairo", sans-serif;
+
+}
+
+body{
+	background: #3e1f47;
+}
+
+
+.mainScreens{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 70vh;
+	flex-direction: column;
+}
+
+
+.headers{
+	font-size: 100px;
+	color: #fff;
+	margin-bottom: 70px;
+}
+
+.playButtons{
+	background-color: #006466; 
+	color: white; 
+	border: 2px solid #006466;
+	padding: 16px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block; 
+	font-size: 20px; 
+	margin: 4px 2px; 
+	transition-duration: 0.4s; 
+	cursor: pointer;
+	width: 170px;
+
+
+}
+
+.playButtons:hover{
+	background-color: #3e1f47;
+	color: #006466;	
+
+}
+
+
+#lostScreenScore{
+	color: white;
+	font-size: 25px;
+	margin-bottom: 40px;
+
+}
+
+#main{
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+
+#game{
+	max-width: 40vw;
+	min-width: 600px;
+	height: 100%;
+	background: #272640;
+}
+
+#score{
+	color: #fff;
+	font-size: 25px;
+	position: absolute;
+	margin: 1%;
+}
+
+
+
+
+#buttonSection{
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	height: 20%;
+
+}
+
+.buttons{
+	max-width: 15vw;
+	max-height: 15vh;
+	width: 120px;
+	height: 120px;
+	border-radius: 10px;
+	margin-left: 3%;
+	background: #065a60;
+	border: 0;
+	color: white;
+}
+
+
+
+#centerItem{
+	width: 100%;
+	height: 70%;
+    display: flex;
+	align-items: center;
+    justify-content: center;
+	
+
+	/*background: red;*/
+
+}
+
+#player{
+	max-width: 35%;
+	max-height: 35%;
+	width: 100px;
+	height: 100px;
+	z-index: 2;
+	/*background: blue;*/
+}
+
+#border{
+	min-width: 600px;
+	max-width: 40vw;
+	height: 60%;
+	z-index: 1;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+}
+
+
+
+@media (max-width: 600px) {
+	#game{min-width: 100vw;
+		max-width: 100vw;}
+	#border{max-width: 100vw;
+		min-width: 100vw;}
+	.headers{font-size: 60px;}
+	#buttonSection{justify-content: space-between;}
+}

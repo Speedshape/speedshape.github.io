@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="fun game, mobile game, Speed Shapes, speedshape.io, speedshape">
+	<meta name="description" content="A little game where you have to quickly click on the correct shape to earn points">
+	<meta name="author" content="MB00">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo">
+	<title>SpeedShapes</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+	<div id="startScreen" class="mainScreens">
+		<h1 class="headers">Speed Shapes</h1>
+		<button class="playButtons" onclick="play()">Play</button>
+	</div>
+
+	<div id="lostScreen" class="mainScreens" style="display: none;">
+		<h1 class="headers">Game Over!</h1>
+		<h3 id="lostScreenScore">Your Score is 0</h3>
+		<button class="playButtons" onclick="play()">Play again</button>
+	</div>
+
+
+	<div id="main">
+			
+		<div id="game">
+			<h1 id="score">Score: 0</h1>
+			<section id="centerItem">
+				<div id="player">
+					<!-- SVG HERE-->
+					<svg id="playerIcon"version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"  fill="#fff">
+						<polygon points="300,150 225,280 75,280 0,150 75,20 225,20"></polygon>
+					</svg>
+					
+				</div>
+
+
+				<div id="border">
+					<svg id="borderIcon" version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" style="fill:none; stroke: #fff; stroke-width:5px;">
+						<path d="m5 150c0-80.08 64.92-145 145-145v0c80.08 0 145 64.92 145 145v0c0 80.08-64.92 145-145 145v0c-80.08 0-145-64.92-145-145v0z" />
+					</svg>
+				</div>
+				
+			</section>
+
+
+			<section id="buttonSection">
+				<button class="buttons" onclick="changePlayer('circle')">
+					<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+						<style>
+							tspan { white-space:pre }
+							.s0 { fill: none;stroke: #fff;stroke-width: 10 } 
+						</style>
+						<path id="Shape 1" class="s0" d="m5 150c0-80.08 64.92-145 145-145v0c80.08 0 145 64.92 145 145v0c0 80.08-64.92 145-145 145v0c-80.08 0-145-64.92-145-145v0z" />
+					</svg>
+				</button>
+				<button class="buttons" onclick="changePlayer('triangle')">
+					<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+					  <polygon points="150,10 290,290 10,290" style="fill: none;stroke:#fff;stroke-width:10" />
+					</svg>
+				</button>
+				<button class="buttons" onclick="changePlayer('square')">
+					<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+						<style>
+							tspan { white-space:pre }
+							.s0 { fill: none;stroke: #fff;stroke-width: 10 } 
+						</style>
+						<path id="Shape 1" class="s0" d="m10 10h280v280h-280v-280z" />
+					</svg>
+				</button>
+				<button class="buttons" onclick="changePlayer('hexagon')">
+					<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+						<polygon fill="none" stroke="#fff" stroke-width="10" points="300,150 225,280 75,280 0,150 75,20 225,20"></polygon>
+					</svg>
+				</button>
+			</section>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		figureList = ['<path d="m5 150c0-80.08 64.92-145 145-145v0c80.08 0 145 64.92 145 145v0c0 80.08-64.92 145-145 145v0c-80.08 0-145-64.92-145-145v0z" />', 
+						'<polygon points="150,10 290,290 10,290"/>',
+						'<path d="m10 10h280v280h-280v-280z" />',
+						'<polygon points="300,150 225,280 75,280 0,150 75,20 225,20"></polygon>'
+			]
+
+		var border = document.getElementById('borderIcon');
+		var score = document.getElementById('score');
+		var player = document.getElementById("playerIcon");
+
+		counter = 0
+		timer = 33;
+
+
+		function play(){
+			document.getElementById('lostScreen').style.display="none";
+			document.getElementById('startScreen').style.display="none";
+			document.getElementById('main').style.display="flex";
+			score.innerHTML = "Score: 0";
+			counter = 0;
+			timer = 33;
+			borderSeter();
+
+		}
+
+		function changePlayer(p) {
+			if (p == "circle") {
+				player.innerHTML= figureList[0];
+			}
+			else if (p == "triangle"){
+				player.innerHTML= figureList[1];
+
+			}
+			else if (p == "square"){
+				player.innerHTML= figureList[2];
+				
+			}
+			else if (p == "hexagon"){
+				player.innerHTML= figureList[3];
+				
+			}
+		}
+
+
+
+
+		function getRandomColor() {
+			var letters = '0123456789ABCDEF';
+			var color = '#';
+			for (var i = 0; i < 6; i++) {
+				color += letters[Math.floor(Math.random() * 16)];
+			}
+			return color;
+		}
+
+
+
+
+
+		document.addEventListener('keypress', logKey);
+
+		function logKey(e) {
+			key = `${e.code}`
+			if (key == 'KeyW') {changePlayer('circle')}
+			else if (key=='KeyA'){changePlayer('triangle')}
+			else if (key=='KeyS'){changePlayer('square')}
+			else if (key=='KeyD'){changePlayer('hexagon')}
+		}
+
+
+
+		function addScore() {
+			counter++;
+			score.innerHTML = "Score: " + counter;
+			if (counter % 3 == 0 && timer > 15){
+				timer = timer-1;
+
+			}
+		}
+
+
+
+		function borderSeter(){
+			f = Math.floor(Math.random() * 4);
+			color = getRandomColor();
+			border.style.stroke = color;
+			border.innerHTML = figureList[f];
+			width = 600;
+			bC = setInterval(function borderController(){
+				if (width >= 110) {
+					width = width - 10;
+					border.style.width=width;
+				}
+				else{
+					check();
+				}
+				
+			},timer);
+
+		}	
+
+		
+
+		function check(){
+			if (border.innerHTML == player.innerHTML){
+				addScore();
+				player.style.fill=border.style.stroke;
+				clearInterval(bC);
+				borderSeter();
+			}
+			else{
+				clearInterval(bC);
+				lost();				
+
+			}
+		}
+
+
+		function lost(){
+			document.getElementById('lostScreen').style.display="flex";
+			document.getElementById('lostScreenScore').innerHTML="Your Score is   "+counter;
+			document.getElementById('main').style.display="none";
+		}
+
+
+	</script>
+</body>
+</html>
