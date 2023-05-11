@@ -6,7 +6,7 @@
 }
 
 body{
-  background: #3e1f47;
+  background: #272640;
 }
 
 
@@ -44,7 +44,7 @@ body{
 }
 
 .playButtons:hover{
-  background-color: #3e1f47;
+  background-color: #201f3d;
   color: #006466; 
 
 }
@@ -74,7 +74,6 @@ body{
 
 #game{
   max-width: 40vw;
-  min-width: 600px;
   height: 100%;
   background: #272640;
 }
@@ -133,7 +132,6 @@ body{
 }
 
 #border{
-  min-width: 600px;
   max-width: 40vw;
   height: 60%;
   z-index: 1;

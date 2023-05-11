@@ -15,8 +15,8 @@
 		const player = document.getElementById("playerIcon");
 
 		// Maximalgrößen für den Rahmen und das Spielfeld werden festgelegt.
-		const maxBorderSize = Math.min(window.innerWidth, Math.round(window.innerWidth * 0.31));
-		const maxGameSize = Math.min(window.innerWidth, Math.round(window.innerWidth * 0.4));
+		const maxGameSize = (Math.round(window.innerWidth * 0.4) < 698) ? window.innerWidth : (window.innerWidth * 0.4);
+		const maxBorderSize = Math.max(300, (maxGameSize * 0.65));
 
 		// Die Breite des Spielfelds wird auf die maximale Größe gesetzt.
 		document.getElementById("game").style.width = `${maxGameSize}px`;
@@ -24,10 +24,10 @@
 		// Zählervariable für den Punktestand, Variablen für die Kontrolle des Rahmenwachstums und die Rahmenveränderungsdauer.
 		let counter = 0;
 		let borderController;
-		let duration = window.innerWidth < 600 ? 38 : 33;
-
+		let duration;
 		// Die play()-Funktion wird aufgerufen, wenn der Startbutton gedrückt wird.
 		function play() {
+		  duration = window.innerWidth < 600 ? 38 : 33;
 		  document.getElementById('lostScreen').style.display = "none";
 		  document.getElementById('startScreen').style.display = "none";
 		  document.getElementById('main').style.display = "flex";
@@ -108,6 +108,7 @@
 			  if (border.innerHTML == player.innerHTML) {
 			    clearInterval(borderController);
 			    border.style.width = `${maxBorderSize}px`;
+				player.style.fill=border.style.stroke;
 			    addScore();
 			    borderSeter();
 			  } else {
