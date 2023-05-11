@@ -1,4 +1,6 @@
-// Eine Liste mit SVG-Pfad-Strings für verschiedene Formen.
+		// I USED CHAT GPT TO HELP ME WRITE THIS CODE MORE ELEGANT AND COMPACT!!
+
+		// Eine Liste mit SVG-Pfad-Strings für verschiedene Formen.
 		const figureList = [
 		  '<path d="m5 150c0-80.08 64.92-145 145-145v0c80.08 0 145 64.92 145 145v0c0 80.08-64.92 145-145 145v0c-80.08 0-145-64.92-145-145v0z" />',
 		  '<polygon points="150,10 290,290 10,290"/>',
